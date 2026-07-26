@@ -35,7 +35,7 @@ function Dashboard() {
   const updateStatus = async (complaintId, newStatus) => {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/complaints/update-status/${complaintId}?status=${newStatus}`
+        `https://ai-smart-complaint-system-6s5k.onrender.com/api/complaints/update-status/${complaintId}?status=${newStatus}`
       )
       fetchComplaints()
     } catch (err) {
@@ -47,7 +47,7 @@ function Dashboard() {
     const confirmed = window.confirm('Are you sure you want to delete this complaint?')
     if (!confirmed) return
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/complaints/delete/${complaintId}`)
+      await axios.delete(`https://ai-smart-complaint-system-6s5k.onrender.com/api/complaints/delete/${complaintId}`)
       fetchComplaints()
     } catch (err) {
       console.error('Delete failed:', err)

@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-const API = 'http://127.0.0.1:8000/api'
-
+const API = 'https://ai-smart-complaint-system-6s5k.onrender.com/api'
 export const submitComplaint = async (complaintData) => {
   const response = await axios.post(`${API}/complaints/submit`, complaintData)
   return response.data
