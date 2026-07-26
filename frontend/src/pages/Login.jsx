@@ -101,14 +101,7 @@ function Login() {
           {loading ? 'Signing in...' : 'Sign In'}
         </button>
 
-        <div style={{ marginTop: '20px', padding: '15px',
-          backgroundColor: '#f8fafc', borderRadius: '8px', fontSize: '13px' }}>
-          <p style={{ fontWeight: '600', marginBottom: '8px', color: '#555' }}>Test Accounts:</p>
-          <p>👤 student@skasc.ac.in / student123</p>
-          <p>👤 staff@skasc.ac.in / staff123</p>
-          <p>👤 hod@skasc.ac.in / hod123</p>
-          <p>👤 principal@skasc.ac.in / principal123</p>
-        </div>
+        
       </div>
     </div>
   )
