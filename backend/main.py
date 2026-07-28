@@ -14,12 +14,11 @@ app = FastAPI(
 # Allow React frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["allow_origins=["http://localhost:5173", "https://ai-smart-complaint-system-6s5k.vercel.app", "*"],"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # Include all routers
 app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(complaints.router, prefix="/api/complaints", tags=["Complaints"])
