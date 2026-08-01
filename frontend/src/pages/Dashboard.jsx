@@ -265,10 +265,14 @@ function Dashboard() {
             </div>
 
             <div style={{ display: 'flex', gap: '10px', fontSize: '13px', flexWrap: 'wrap' }}>
-              <span style={{ backgroundColor: 'white', padding: '3px 10px',
-                borderRadius: '6px', fontWeight: '500' }}>
-                📁 {c.category}
-              </span>
+  <span style={{ backgroundColor: 'white', padding: '3px 10px',
+    borderRadius: '6px', fontWeight: '500' }}>
+    👤 {c.is_anonymous ? '🔒 Anonymous' : c.student_name || 'Student'}
+  </span>
+  <span style={{ backgroundColor: 'white', padding: '3px 10px',
+    borderRadius: '6px', fontWeight: '500' }}>
+    📁 {c.category}
+  </span>
               <span style={{ backgroundColor: 'white', padding: '3px 10px',
                 borderRadius: '6px', fontWeight: '500' }}>
                 ⚡ {c.priority}

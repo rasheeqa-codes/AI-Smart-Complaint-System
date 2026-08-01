@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext'
 import { submitComplaint } from '../services/complaintService'
 
 function SubmitComplaint() {
+  const { user } = useAuth()
   const [description, setDescription] = useState('')
   const [anonymous, setAnonymous] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -38,6 +40,8 @@ function SubmitComplaint() {
       const data = await submitComplaint({
         description,
         is_anonymous: anonymous,
+        student_id: anonymous ? null : user?.id,
+        student_name: anonymous ? null : user?.name,
         voice_input_used: false
       })
       setResult(data)
@@ -96,7 +100,8 @@ function SubmitComplaint() {
           rows={6}
           style={{ width: '100%', padding: '12px', borderRadius: '8px',
             border: '1px solid #ddd', fontSize: '15px',
-            resize: 'vertical', lineHeight: '1.5' }}
+            resize: 'vertical', lineHeight: '1.5',
+            boxSizing: 'border-box' }}
         />
         <button
           onClick={startVoice}
@@ -118,9 +123,17 @@ function SubmitComplaint() {
           style={{ width: '18px', height: '18px' }}
         />
         <label htmlFor="anonymous" style={{ fontWeight: '500', color: '#333' }}>
-          Submit Anonymously (your identity will be hidden)
+          Submit Anonymously (your identity will be hidden from staff)
         </label>
       </div>
+
+      {!anonymous && user && (
+        <div style={{ marginBottom: '20px', padding: '10px 14px',
+          backgroundColor: '#f0f4f8', borderRadius: '8px',
+          fontSize: '13px', color: '#555' }}>
+          Submitting as: <strong>{user.name}</strong>
+        </div>
+      )}
 
       <button
         onClick={handleSubmit}

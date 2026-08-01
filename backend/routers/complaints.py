@@ -17,6 +17,7 @@ class ComplaintRequest(BaseModel):
     description: str
     is_anonymous: bool = False
     student_id: Optional[str] = None
+    student_name: Optional[str] = None
     voice_input_used: bool = False
 
 def generate_complaint_id():
@@ -36,6 +37,7 @@ def submit_complaint(complaint: ComplaintRequest):
             "description": complaint.description,
             "is_anonymous": complaint.is_anonymous,
             "student_id": None if complaint.is_anonymous else complaint.student_id,
+            "student_name": None if complaint.is_anonymous else complaint.student_name,
             "voice_input_used": complaint.voice_input_used,
             "status": "Routed",
             "category": ai_result["category"],
