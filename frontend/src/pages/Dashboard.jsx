@@ -280,10 +280,6 @@ function Dashboard() {
                 ⚡ {c.priority}
               </span>
               <span style={{ backgroundColor: 'white', padding: '3px 10px',
-                borderRadius: '6px', fontWeight: '500' }}>
-                🤖 {c.ai_summary}
-              </span>
-              <span style={{ backgroundColor: 'white', padding: '3px 10px',
                 borderRadius: '6px', fontWeight: '500', color: '#777' }}>
                 🕐 {new Date(c.created_at).toLocaleDateString('en-IN')}
               </span>
