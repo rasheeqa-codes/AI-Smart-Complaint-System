@@ -68,21 +68,23 @@ function Dashboard() {
   }
 
   const filteredComplaints = complaints.filter((c) => {
-    if (user.role === 'staff') {
-      if (!['Submitted', 'Analyzing', 'Routed', 'In Progress'].includes(c.status)) return false
-    }
-    if (user.role === 'hod') {
-      if (!['Escalated to HOD', 'Escalated to Principal', 'In Progress', 'Routed'].includes(c.status)) return false
-    }
-    if (user.role === 'principal') {
-      if (!['Escalated to Principal'].includes(c.status)) return false
-    }
-    if (search && !c.description?.toLowerCase().includes(search.toLowerCase()) &&
-      !c.complaint_id?.toLowerCase().includes(search.toLowerCase())) return false
-    if (filterCategory !== 'All' && c.category !== filterCategory) return false
-    if (filterPriority !== 'All' && c.priority !== filterPriority) return false
-    return true
-  })
+  if (user.role === 'staff') {
+    if (!['Submitted', 'Analyzing', 'Routed', 
+      'In Progress'].includes(c.status)) return false
+  }
+  if (user.role === 'hod') {
+    if (!['Escalated to HOD', 
+      'Escalated to Principal'].includes(c.status)) return false
+  }
+  if (user.role === 'principal') {
+    if (!['Escalated to Principal'].includes(c.status)) return false
+  }
+  if (search && !c.description?.toLowerCase().includes(search.toLowerCase()) &&
+    !c.complaint_id?.toLowerCase().includes(search.toLowerCase())) return false
+  if (filterCategory !== 'All' && c.category !== filterCategory) return false
+  if (filterPriority !== 'All' && c.priority !== filterPriority) return false
+  return true
+})
 
   const analytics = {
     total: complaints.length,
